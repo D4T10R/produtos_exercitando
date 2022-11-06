@@ -3,6 +3,9 @@ import java.util.Scanner;
 
 import javax.lang.model.util.SimpleAnnotationValueVisitor14;
 
+import entities.ProdutosNovos;
+import entities.ProdutosVelhos;
+import entities.Tipo;
 import entities.produtos;
 
 import java.io.BufferedReader;
@@ -16,6 +19,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -47,15 +51,21 @@ public class Program {
                 System.out.print("Quantidade: ");
                 int quantidade = sc.nextInt();
                 System.out.print("Tipo: ");
-                String tipo = sc.nextLine();
+                sc.next();
+                String strTipo = sc.nextLine();
+            
                 System.out.println("Fabricação: ");
                 Date fabricacao = sdf.parse(sc.nextLine());
                 System.out.println("Vencimento: ");
                 Date vencimento = sdf.parse(sc.nextLine());
 
-                if (vencimento < dataAtual) {
-                    
+                if (vencimento.compareTo(dataAtual) > 0 || vencimento.compareTo(dataAtual) == 0) {
+                    produtos.add(new ProdutosNovos(nome, preco, quantidade, Tipo.valueOf(strTipo), fabricacao, vencimento));  // PROBLEMAS NO ENUM
                 }
+                else if (vencimento.compareTo(dataAtual) < 0) {
+                    produtos.add(new ProdutosVelhos(nome, preco, quantidade, Tipo.valueOf(strTipo), fabricacao, vencimento));
+                }
+                
 
             }
 
@@ -67,6 +77,8 @@ public class Program {
         catch (ParseException e) {
             System.out.println("ERRO FABRICACAO SDF" + e.getMessage());
         }
+
+
 
 
         try (BufferedReader br = new BufferedReader(new FileReader(strFile))) {

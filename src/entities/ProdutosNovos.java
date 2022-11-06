@@ -11,9 +11,7 @@ public class ProdutosNovos extends produtos {
     // ATRIBUTOS
 
     // CONSTRUTORES
-    public ProdutosNovos() {
-        super();
-    }
+  
 
     public ProdutosNovos(String nome, Double preco, Integer quantidade, Tipo tipo, Date fabricacao, Date vencimento) {
         super(nome, preco, quantidade, tipo, fabricacao);
@@ -38,7 +36,8 @@ public class ProdutosNovos extends produtos {
         return "Produto: " + getNome() + 
         "\n Preço: R$" + getPreco() + ", Quantidade: " + getQuantidade() + 
         "\n Tipo: " + getTipo() + 
-        "\n Fabricação: " + sdf.format(getFabricado()) + " | Vencimento: " + sdf.format(vencimento);
+        "\n Fabricação: " + sdf.format(getFabricado()) + " | Vencimento: " + sdf.format(vencimento) +
+        "\n !NOVO!";
     }
     // METODOS
     

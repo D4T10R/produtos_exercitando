@@ -38,7 +38,8 @@ public class ProdutosVelhos extends produtos {
         return "Produto: " + getNome() + 
         "\n Preço: R$" + getPreco() + ", Quantidade: " + getQuantidade() + 
         "\n Tipo: " + getTipo() + 
-        "\n Fabricação: " + sdf.format(getFabricado()) + " | Vencimento: " + sdf.format(vencido);
+        "\n Fabricação: " + sdf.format(getFabricado()) + " | Vencimento: " + sdf.format(vencido) + 
+        "\n !VELHOS!";
     }
     // METODOS
 
